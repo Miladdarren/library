@@ -20,8 +20,6 @@ exports.bookinstance_list = function(req, res, next) {
 // Display detail page for a specific BookInstance.
 exports.bookinstance_detail = function(req, res, next) {
 
-    if (!isNaN(req.params.id))
-    {
         BookInstance.findById(req.params.id)
         .populate('book')
         .exec(function (err, bookinstance) {
@@ -34,9 +32,6 @@ exports.bookinstance_detail = function(req, res, next) {
           // Successful, so render.
           res.render('bookinstance_detail', { title: 'Book:', bookinstance:  bookinstance});
         });
-    }
-    else
-        next();
 };
 
 // Display BookInstance create form on GET.

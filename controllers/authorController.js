@@ -21,8 +21,6 @@ exports.author_list = function (req, res, next) {
 // Display detail page for a specific Author.
 exports.author_detail = function (req, res, next) {
 
-    if (!isNaN(req.params.id))
-    {
         async.parallel({
             author: function (callback) {
                 Author.findById(req.params.id)
@@ -42,10 +40,6 @@ exports.author_detail = function (req, res, next) {
             // Successful, so render.
             res.render('author_detail', { title: 'Author Detail', author: results.author, author_books: results.authors_books });
         });
-    }
-    else
-        next();
-
 };
 
 // Display Author create form on GET.

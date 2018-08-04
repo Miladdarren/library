@@ -21,8 +21,6 @@ exports.genre_list = function(req, res, next) {
 // Display detail page for a specific Genre.
 exports.genre_detail = function(req, res, next) {
 
-    if (!isNaN(req.params.id))
-    {
         async.parallel({
             genre: function(callback) {
 
@@ -45,9 +43,6 @@ exports.genre_detail = function(req, res, next) {
             // Successful, so render.
             res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books } );
         });
-    }
-    else
-        next();
 };
 
 // Display Genre create form on GET.
